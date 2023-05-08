@@ -3,8 +3,8 @@
 namespace Mintellity\LaravelRecycleBin\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Orchestra\Testbench\TestCase as Orchestra;
 use Mintellity\LaravelRecycleBin\LaravelRecycleBinServiceProvider;
+use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
 {
