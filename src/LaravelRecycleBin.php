@@ -15,7 +15,7 @@ class LaravelRecycleBin
     public static function showAllTrashed(): Collection
     {
         return collect(config('recycle-bin.recycle-models'))
-            ->mapWithKeys(fn (string $className) => self::showTrashed($className));
+            ->mapWithKeys(fn (string $className) => [$className => self::showTrashed($className)]);
     }
 
     /**
