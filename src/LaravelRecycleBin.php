@@ -9,8 +9,6 @@ class LaravelRecycleBin
 {
     /**
      * All models in recycle bin for all classes in config.
-     *
-     * @return Collection
      */
     public static function showAllTrashed(): Collection
     {
@@ -21,8 +19,7 @@ class LaravelRecycleBin
     /**
      * All models in recycle bin for given class.
      *
-     * @param class-string<Model>|Model $model
-     * @return Collection
+     * @param  class-string<Model>|Model  $model
      */
     public static function showTrashed(string|Model $model): Collection
     {
