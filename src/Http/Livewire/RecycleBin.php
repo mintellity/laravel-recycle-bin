@@ -13,10 +13,11 @@ class RecycleBin extends Component
 
     public function render(): View
     {
-        if ($this->selectedModel !== '')
+        if ($this->selectedModel !== '') {
             $trashedItems = LaravelRecycleBin::showTrashed($this->selectedModel)->simplePaginate();
-        else
+        } else {
             $trashedItems = new Paginator([], 1);
+        }
 
         return view('recycle-bin::livewire.recycle-bin', [
             'recycleModels' => config('recycle-bin.recycle-models'),
@@ -24,13 +25,19 @@ class RecycleBin extends Component
         ]);
     }
 
+    /**
+     * Restore the model of the selected class with the given id.
+     */
     public function restore(string $id): void
     {
-        $this->selectedModel::withTrashed()->find($id)->restore();
+        LaravelRecycleBin::restoreTrashed($this->selectedModel, $id);
     }
 
+    /**
+     * Force delete the model of the selected class with the given id.
+     */
     public function forceDelete(string $id): void
     {
-        $this->selectedModel::withTrashed()->find($id)->forceDelete();
+        LaravelRecycleBin::forceDeleteTrashed($this->selectedModel, $id);
     }
 }
