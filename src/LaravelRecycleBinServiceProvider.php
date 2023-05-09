@@ -2,6 +2,8 @@
 
 namespace Mintellity\LaravelRecycleBin;
 
+use Livewire\Livewire;
+use Mintellity\LaravelRecycleBin\Http\Livewire\RecycleBin;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -17,7 +19,13 @@ class LaravelRecycleBinServiceProvider extends PackageServiceProvider
         $package
             ->name('laravel-recycle-bin')
             ->hasConfigFile()
-            ->hasViews()
-            ->hasMigration('create_laravel-recycle-bin_table');
+            ->hasViews();
+    }
+
+    public function bootingPackage()
+    {
+        parent::bootingPackage();
+
+        Livewire::component('recycle-bin::recycle-bin', RecycleBin::class);
     }
 }
